@@ -1,0 +1,349 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    height: 100%;
+    font-family: Arial, sans-serif;
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: 60% 40%; /* <-- AQUI! */
+    height: 100vh;
+  }
+  
+  
+  /* Lado gradiente */
+  .gradient-side {
+    background: linear-gradient(135deg, #FFA007, #FF0676);
+  }
+  
+  /* Lado branco do formulário */
+  .form-side {
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Estilo do formulário */
+  .form-wrapper {
+    width: 100%;
+    max-width: 400px;
+    padding: 40px;
+  }
+  
+  /* Tabs */
+  .tabs {
+    display: flex;
+    margin-bottom: 20px;
+  }
+  
+  .tab {
+    flex: 1;
+    padding: 10px;
+    cursor: pointer;
+    background-color: #eee;
+    border: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+  
+  .tab.active {
+    background-color: #ddd;
+  }
+  
+  /* Forms */
+  .form {
+    display: none;
+    flex-direction: column;
+  }
+  
+  .form.active {
+    display: flex;
+  }
+  
+  .form h2 {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .form input {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+  }
+  
+  .form button {
+    padding: 12px;
+    background-color: #FFA007;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .form button:hover {
+    background-color: #ff8600;
+  }
+  /* Cor principal personalizada */
+:root {
+    --primary-color: #FFABAC;
+  }
+  
+  .logo {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto 20px;
+  }
+  
+  /* Botões */
+  .form button {
+    padding: 12px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .form button:hover {
+    background-color: #ff8c8d;
+  }
+  
+  /* Botões lado a lado (login) */
+  .buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+  }
+  
+  /* Checkbox + link */
+  .options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+  
+  .options a {
+    text-decoration: none;
+    color: var(--primary-color);
+  }
+  
+  /* Mostrar/Ocultar senha */
+  .password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .password-wrapper input {
+    width: 100%;
+  }
+  
+  .toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #999;
+    font-size: 18px;
+  }
+  /* ======= MENU SUPERIOR ======= */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(135deg, #FFA007, #FF0676);
+    padding: 10px 20px;
+    color: white;
+    position: relative;
+  }
+  
+  .navbar .logo img {
+    height: 40px;
+  }
+  
+  .navbar .menu-toggle {
+    font-size: 24px;
+    cursor: pointer;
+    display: none;
+  }
+  
+  .navbar .profile-pic img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  /* Menu dropdown */
+  .menu {
+    position: absolute;
+    top: 60px;
+    left: 20px;
+    background: white;
+    color: #333;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    display: none;
+    z-index: 99;
+  }
+  
+  .menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 10px;
+  }
+  
+  .menu ul li {
+    margin: 10px 0;
+  }
+  
+  .menu ul li a {
+    color: #333;
+    text-decoration: none;
+  }
+  
+  /* ======= CONTEÚDO PRINCIPAL ======= */
+  .main-content {
+    height: calc(100vh - 60px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    text-align: center;
+  }
+  
+  .main-content h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .next-button {
+    padding: 12px 30px;
+    background-color: #FFABAC;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .next-button:hover {
+    background-color: #ff8c8d;
+  }
+  
+  /* ======= RESPONSIVO ======= */
+  @media (max-width: 768px) {
+    .navbar .menu-toggle {
+      display: block;
+    }
+  
+    .menu {
+      width: 150px;
+    }
+  }
+  .menu ul li {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+  }
+  
+  .menu ul li a {
+    color: #333;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    padding: 6px 8px;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+  }
+  
+  .menu ul li a:hover {
+    background-color: #f3f3f3;
+  }
+      
+  /* Botão para abrir menu */
+.menu-toggle {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  background-color: transparent;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  z-index: 1001;
+  color: #333;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px; /* escondido inicialmente */
+  width: 250px;
+  height: 100%;
+  background: linear-gradient(135deg, #FFA007, #FF0676); /* gradiente */
+  box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+  padding: 20px;
+  transition: left 0.3s ease;
+  z-index: 1000;
+  color: white; /* cor do texto */
+}
+
+.sidebar li,
+.sidebar li i,
+.sidebar .close-btn i {
+  color: white;
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+.sidebar .close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  float: right;
+  cursor: pointer;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 40px;
+}
+
+.sidebar li {
+  margin: 15px 0;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.sidebar li i {
+  margin-right: 10px;
+  font-size: 1.3rem;
+}
+
+.profile-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
