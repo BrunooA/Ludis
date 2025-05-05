@@ -1,0 +1,167 @@
+/* Estilos gerais */
+body {
+    background-color: white; /* Definindo o fundo do body como branco */
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilo do header */
+header {
+    background: linear-gradient(to top, #FFA007, #FF0676); /* Gradiente do header */
+    padding: 20px;
+    display: flex;
+    justify-content: space-between; /* Espaça os itens entre os lados */
+    align-items: center; /* Alinha os itens verticalmente ao centro */
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.header-left, .header-right {
+    display: flex;
+    align-items: center;
+}
+
+.header-center {
+    flex-grow: 1; /* Faz o centro crescer para criar o espaço vazio no meio */
+}
+
+/* Estilo para o ícone do menu */
+.menu-icon i {
+    font-size: 30px; /* Tamanho maior do ícone do menu */
+    cursor: pointer;
+}
+
+/* Estilo para o link da imagem da página inicial */
+.home-icon a {
+    text-decoration: none;
+}
+
+.home-icon-img {
+    width: 40px; /* Tamanho do ícone da página inicial */
+    height: 40px;
+    object-fit: cover; /* Garante que a imagem cubra o tamanho sem distorcer */
+    border-radius: 50%; /* Caso queira arredondar a imagem, se necessário */
+    cursor: pointer;
+    margin-left: 20px; /* Espaçamento entre o ícone do menu e a imagem da página inicial */
+}
+
+/* Estilo para o link da foto de perfil */
+.profile-link {
+    text-decoration: none;
+}
+
+.profile-img {
+    width: 40px; /* Tamanho da foto de perfil */
+    height: 40px;
+    border-radius: 50%; /* Deixa a imagem arredondada */
+    border: 2px solid white; /* Borda branca ao redor da imagem */
+    object-fit: cover; /* Garante que a imagem cubra o tamanho da área de 40x40 */
+    cursor: pointer;
+    margin-left: 20px; /* Espaçamento à esquerda da foto de perfil */
+}
+
+/* Estilo do menu */
+.side-menu {
+    position: fixed;
+    top: 79;
+    left: -250px; /* Inicialmente fora da tela */
+    width: 250px;
+    height: 100%;
+    background: linear-gradient(to top, #FFA007, #FF0676);
+    transition: left 0.3s ease;
+    z-index: 999; /* Garante que o menu fique acima de outros elementos */
+}
+/* Esconde o menu por padrão */
+#sideMenu ul {
+    padding-left: 20px;
+}
+
+#sideMenu ul li {
+    margin: 15px 0;
+}
+
+#sideMenu ul li a {
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
+    border-radius: 5px;
+}
+
+/* Estilo para o item ativo */
+#sideMenu ul li a.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #FFD700; /* Destaque para o item ativo */
+}
+
+/* Estilo para o hover */
+#sideMenu ul li a:hover {
+    color: #FFD700;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Estilo do botão do menu */
+header button {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 24px;
+}
+
+/* Ajuste no ícone do menu */
+header i {
+    font-size: 30px;
+}
+
+/* Estilo para a logo e imagem do perfil */
+header a img {
+    max-height: 40px;
+}
+
+header a img {
+    height: 40px;
+    border-radius: 50%;
+}
+
+.side-menu.open {
+    left: 0; /* Quando aberto, move o menu para a esquerda */
+}
+
+/* Remover os pontos de lista */
+#sideMenu ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+#sideMenu ul li {
+    margin: 15px 0;
+}
+
+#sideMenu ul li a {
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
+    border-radius: 5px;
+}
+
+#sideMenu ul li a i {
+    margin-right: 10px;
+}
+
+#sideMenu ul li a:hover {
+    color: #FFD700;
+    background-color: rgba(255, 255, 255, 0.1);
+}
