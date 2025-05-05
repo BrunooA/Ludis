@@ -1,349 +1,145 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  html, body {
-    height: 100%;
-    font-family: Arial, sans-serif;
-  }
-  
-  .grid-container {
-    display: grid;
-    grid-template-columns: 60% 40%; /* <-- AQUI! */
+/* Estilo geral para todas as páginas */
+body {
+    background: linear-gradient(to top, #FF0676,#FFA007);
     height: 100vh;
-  }
-  
-  
-  /* Lado gradiente */
-  .gradient-side {
-    background: linear-gradient(135deg, #FFA007, #FF0676);
-  }
-  
-  /* Lado branco do formulário */
-  .form-side {
-    background-color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  /* Estilo do formulário */
-  .form-wrapper {
-    width: 100%;
-    max-width: 400px;
-    padding: 40px;
-  }
-  
-  /* Tabs */
-  .tabs {
-    display: flex;
-    margin-bottom: 20px;
-  }
-  
-  .tab {
-    flex: 1;
-    padding: 10px;
-    cursor: pointer;
-    background-color: #eee;
-    border: none;
-    font-weight: bold;
-    transition: background-color 0.3s;
-  }
-  
-  .tab.active {
-    background-color: #ddd;
-  }
-  
-  /* Forms */
-  .form {
-    display: none;
-    flex-direction: column;
-  }
-  
-  .form.active {
-    display: flex;
-  }
-  
-  .form h2 {
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  .form input {
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-  }
-  
-  .form button {
-    padding: 12px;
-    background-color: #FFA007;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .form button:hover {
-    background-color: #ff8600;
-  }
-  /* Cor principal personalizada */
-:root {
-    --primary-color: #FFABAC;
-  }
-  
-  .logo {
-    display: block;
-    max-width: 100%;
-    height: auto;
-    margin: 0 auto 20px;
-  }
-  
-  /* Botões */
-  .form button {
-    padding: 12px;
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .form button:hover {
-    background-color: #ff8c8d;
-  }
-  
-  /* Botões lado a lado (login) */
-  .buttons {
-    display: flex;
-    gap: 10px;
-    justify-content: space-between;
-  }
-  
-  /* Checkbox + link */
-  .options {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 14px;
-    margin-bottom: 15px;
-  }
-  
-  .options a {
-    text-decoration: none;
-    color: var(--primary-color);
-  }
-  
-  /* Mostrar/Ocultar senha */
-  .password-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-  }
-  
-  .password-wrapper input {
-    width: 100%;
-  }
-  
-  .toggle-password {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    color: #999;
-    font-size: 18px;
-  }
-  /* ======= MENU SUPERIOR ======= */
-.navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: linear-gradient(135deg, #FFA007, #FF0676);
-    padding: 10px 20px;
-    color: white;
-    position: relative;
-  }
-  
-  .navbar .logo img {
-    height: 40px;
-  }
-  
-  .navbar .menu-toggle {
-    font-size: 24px;
-    cursor: pointer;
-    display: none;
-  }
-  
-  .navbar .profile-pic img {
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-  
-  /* Menu dropdown */
-  .menu {
-    position: absolute;
-    top: 60px;
-    left: 20px;
-    background: white;
-    color: #333;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    display: none;
-    z-index: 99;
-  }
-  
-  .menu ul {
-    list-style: none;
     margin: 0;
-    padding: 10px;
-  }
-  
-  .menu ul li {
-    margin: 10px 0;
-  }
-  
-  .menu ul li a {
-    color: #333;
-    text-decoration: none;
-  }
-  
-  /* ======= CONTEÚDO PRINCIPAL ======= */
-  .main-content {
-    height: calc(100vh - 60px);
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: white;
+}
+
+/* Estilos para o cabeçalho */
+header {
+    background: linear-gradient(to top, #FFA007, #FF0676);
+    padding: 20px;
     text-align: center;
-  }
-  
-  .main-content h1 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-  }
-  
-  .next-button {
-    padding: 12px 30px;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.background-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.2;
+    z-index: -1;
+}
+
+.background-logo img {
+    width: 900px;
+    max-width: 100%;
+}
+
+.login-box  {
+    margin-top: -400px;
+    padding: 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Container da logo grande */
+.logo-container {
+    width: 400px;
+    height: 200px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    right: 300%; /* Movendo mais para a esquerda */
+    transform: translateY(-50%);
+}
+
+/* Ajuste no tamanho da logo */
+.logo-container img {
+    width: 100%; /* A imagem se adapta ao círculo */
+    max-width: 450px;
+}
+
+.logo-small {
+    width: 300px;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Campos de entrada rosados */
+.input-custom {
+    border: 2px solid #FFABAC;
+    background-color: #FFE4E5;
+    color: #333;
+}
+
+.input-custom:focus {
+    border-color: #FF0676;
+    box-shadow: 0 0 5px #FF0676;
+}
+
+
+/* Botão Entrar rosado */
+.btn-custom {
+    background-color: #FFABAC;
+    border: none;
+    color: white;
+}
+
+.btn-custom:hover {
+    background-color: #FF0676;
+}
+
+/* Botão pequeno */
+.btn-custom.btn-sm {
+    padding: 5px 15px; /* Ajuste o tamanho do padding conforme necessário */
+    font-size: 14px; /* Tamanho da fonte */
+}
+
+/* Botão Cadastrar com borda rosada */
+.btn-outline-custom {
+    border: 2px solid #FFABAC;
+    color: #FFABAC;
+}
+
+.btn-outline-custom:hover {
     background-color: #FFABAC;
     color: white;
-    border: none;
-    border-radius: 6px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  .next-button:hover {
-    background-color: #ff8c8d;
-  }
-  
-  /* ======= RESPONSIVO ======= */
-  @media (max-width: 768px) {
-    .navbar .menu-toggle {
-      display: block;
-    }
-  
-    .menu {
-      width: 150px;
-    }
-  }
-  .menu ul li {
-    margin: 10px 0;
-    display: flex;
-    align-items: center;
-  }
-  
-  .menu ul li a {
-    color: #333;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 16px;
-    padding: 6px 8px;
-    border-radius: 6px;
-    transition: background-color 0.2s;
-  }
-  
-  .menu ul li a:hover {
-    background-color: #f3f3f3;
-  }
-      
-  /* Botão para abrir menu */
-.menu-toggle {
-  position: fixed;
-  top: 15px;
-  left: 15px;
-  background-color: transparent;
-  border: none;
-  font-size: 1.8rem;
-  cursor: pointer;
-  z-index: 1001;
-  color: #333;
 }
 
-.sidebar {
-  position: fixed;
-  top: 0;
-  left: -250px; /* escondido inicialmente */
-  width: 250px;
-  height: 100%;
-  background: linear-gradient(135deg, #FFA007, #FF0676); /* gradiente */
-  box-shadow: 2px 0 5px rgba(0,0,0,0.2);
-  padding: 20px;
-  transition: left 0.3s ease;
-  z-index: 1000;
-  color: white; /* cor do texto */
+/* Estilo para os campos de entrada */
+.form-control {
+    background-color: #FFABAC !important; /* Cor de fundo rosa */
+    border: 1px solid #d18b8c; /* Borda levemente mais escura */
+    color: white; /* Texto branco */
 }
 
-.sidebar li,
-.sidebar li i,
-.sidebar .close-btn i {
-  color: white;
+/* Para mudar a cor do placeholder */
+.form-control::placeholder {
+    color: white; /* Texto do placeholder branco */
+    opacity: 0.7; /* Deixa mais suave */
 }
 
-.sidebar.open {
-  left: 0;
+/* Quando o usuário clica no campo */
+.form-control:focus {
+    background-color: #FFABAC !important; /* Mantém o fundo rosa ao focar */
+    border-color: #FF0676; /* Borda mais vibrante */
+    color: white;
+    box-shadow: 0 0 5px rgba(255, 6, 118, 0.5); /* Efeito de brilho */
 }
 
-.sidebar .close-btn {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  float: right;
-  cursor: pointer;
+/* Ajuste para garantir que o botão do olho fique alinhado */
+.input-group .btn-outline-secondary {
+    background-color: white; /* Fundo branco para contraste */
+    border-color: #d18b8c;
 }
 
-.sidebar ul {
-  list-style: none;
-  padding: 0;
-  margin-top: 40px;
+.input-group .btn-outline-secondary:hover {
+    background-color: #FF0676; /* Cor vibrante no hover */
+    color: white;
 }
 
-.sidebar li {
-  margin: 15px 0;
-  font-size: 1.1rem;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-}
-
-.sidebar li i {
-  margin-right: 10px;
-  font-size: 1.3rem;
-}
-
-.profile-button {
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
+/* Ajuste das imagens de parceiros */
+.partner-logo {
+    max-width: 120px; /* Tamanho das logos */
+    height: auto;
+    filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.2)); /* Sombreamento para destaque */
 }
