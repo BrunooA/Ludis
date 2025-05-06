@@ -153,3 +153,54 @@ if (profileImageElement) {
         profileImageElement.src = userImage;
     }
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    const userImage = sessionStorage.getItem("userImage");
+    const userName = sessionStorage.getItem("userName");
+
+    // Header
+    const headerImage = document.getElementById("profileImage");
+    const headerName = document.getElementById("userName");
+
+    if (headerImage && userImage) {
+        headerImage.src = userImage;
+    }
+    if (headerName && userName) {
+        headerName.innerText = userName;
+    }
+
+    // Página de perfil
+    const profileName = document.getElementById("profileName");
+    const profilePic = document.getElementById("profilePic");
+
+    if (profileName && userName) {
+        profileName.innerText = userName;
+    }
+    if (profilePic && userImage) {
+        profilePic.src = userImage;
+    }
+});
+
+    const editInput = document.getElementById("editProfilePic");
+
+    if (editInput) {
+        editInput.addEventListener("change", function () {
+            const file = this.files[0];
+            if (file && file.type.startsWith("image/")) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const imageUrl = e.target.result;
+
+                    // Atualiza a imagem no perfil e header
+                    sessionStorage.setItem("userImage", imageUrl);
+
+                    const profilePic = document.getElementById("profilePic");
+                    const headerImage = document.getElementById("profileImage");
+
+                    if (profilePic) profilePic.src = imageUrl;
+                    if (headerImage) headerImage.src = imageUrl;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    }
