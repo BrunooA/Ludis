@@ -10,7 +10,7 @@ O sistema é composto pelas seguintes páginas:
 
 ### 📄 `cadastro.html`
 Página para criar um novo usuário.
-- Campos: Nome, Email, Senha, Foto de Perfil (upload ou avatar).
+- Campos: Nome, Email e Senha.
 - Os dados são salvos no `localStorage`.
 - A imagem pode ser carregada do dispositivo ou escolhida entre avatares disponíveis.
 
@@ -18,7 +18,7 @@ Página para criar um novo usuário.
 
 ### 📄 `editar_perfil.html`
 Permite alterar dados do usuário.
-- Editáveis: Telefone e imagem de perfil.
+- Editáveis: Imagem de perfil.
 - Não editáveis: Nome e Email.
 - Atualiza as informações no `localStorage`.
 
@@ -26,8 +26,9 @@ Permite alterar dados do usuário.
 
 ### 📄 `home.html`
 Página principal após o login.
-- Exibe o nome e a imagem do usuário.
+- Exibe a imagem do usuário.
 - Contém menu lateral com links para as demais páginas.
+- Contém botões que levam para mapa, rankimg e perfil.
 - Acessível somente após login.
 
 ---
@@ -35,14 +36,13 @@ Página principal após o login.
 ### 📄 `login.html`
 Tela de autenticação.
 - Usuário informa email e senha.
-- Se válidos, os dados são carregados no `sessionStorage` e o usuário é redirecionado para `home.html`.
+- Se válidos, os dados são carregados no `LocalStorage` e o usuário é redirecionado para `home.html`.
 
 ---
 
 ### 📄 `mapa.html`
 Apresenta um mapa interativo.
-- Mostra pontos relevantes como hospitais ou centros de apoio.
-- Pode utilizar um iframe com Google Maps ou similar.
+- Contém botões para iniciar o quiz.
 
 ---
 
@@ -51,7 +51,7 @@ Exibe as informações do usuário logado.
 - Mostra nome e foto de perfil.
 - Botão para ir para a edição de perfil.
 - Permite escolher avatares como foto de perfil.
-- Dados extraídos do `sessionStorage`.
+- Dados extraídos do `LocalStorage`.
 
 ---
 
@@ -65,20 +65,6 @@ Página de quiz com perguntas de múltipla escolha.
 Mostra a classificação dos usuários com base na pontuação do quiz.
 - Lista todos os usuários ordenados da maior para a menor pontuação.
 - Dados extraídos do `localStorage`.
-
----
-
-### 📄 `redefinir_senha.html`
-Permite redefinir a senha do usuário.
-- O usuário informa o email e cria uma nova senha.
-- Atualiza os dados no `localStorage`.
-
----
-
-### 📄 `sobre_nos.html`
-Página institucional.
-- Explica os objetivos do projeto.
-- Apresenta a equipe e o contexto (pedagogia hospitalar no SUS).
 
 ---
 
@@ -100,7 +86,7 @@ Página explicativa sobre como usar o sistema.
 
 - HTML5
 - CSS3 (incluindo Bootstrap 5)
-- JavaScript (Vanilla JS)
-- Armazenamento via `localStorage` e `sessionStorage`
+- JavaScript
+- Armazenamento via `localStorage`.
 
 ---
