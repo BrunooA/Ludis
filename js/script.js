@@ -22,11 +22,19 @@ document.addEventListener("DOMContentLoaded", function () {
         return JSON.parse(localStorage.getItem("users")) || [];
     }
 
-    function saveUser(email, password, profileImageBase64) {
+    function saveUser(email, password, profileImageBase64, name) {
         let users = getUsers();
-        users.push({ email, password, profileImage: profileImageBase64 });
+        const id = users.length > 0 ? users[users.length - 1].id + 1 : 1;
+        users.push({
+            id,
+            email,
+            password,
+            profileImage: profileImageBase64 || "",
+            name: name && name !== "" ? name : "Nome não informado"
+        });
         localStorage.setItem("users", JSON.stringify(users));
     }
+
 
     // === Cadastro ===
     const cadastroForm = document.getElementById("cadastroForm");
@@ -36,6 +44,9 @@ document.addEventListener("DOMContentLoaded", function () {
             const email = document.getElementById("email").value.trim();
             const password = document.getElementById("password").value;
             const passwordConfirm = document.getElementById("passwordConfirm").value;
+            const nameInput = document.getElementById("name");
+            const name = nameInput ? nameInput.value.trim() : "";
+
             const profilePicInput = document.getElementById("profilePic");
 
             if (password !== passwordConfirm) {
@@ -53,16 +64,15 @@ document.addEventListener("DOMContentLoaded", function () {
             if (file) {
                 const reader = new FileReader();
                 reader.onload = function (e) {
-                    const profileImageBase64 = e.target.result;
-                    saveUser(email, password, profileImageBase64);
+                    saveUser(email, password, e.target.result, name);
                     alert("Cadastro realizado com sucesso! Redirecionando para o login.");
-                    window.location.href = "/login.html";
+                    window.location.href = "login.html";
                 };
                 reader.readAsDataURL(file);
             } else {
-                saveUser(email, password, null);
+                saveUser(email, password, null, name);
                 alert("Cadastro realizado com sucesso! Redirecionando para o login.");
-                window.location.href = "/login.html";
+                window.location.href = "login.html";
             }
         });
     }
@@ -74,48 +84,49 @@ document.addEventListener("DOMContentLoaded", function () {
             event.preventDefault();
             const email = document.getElementById("email").value.trim();
             const password = document.getElementById("password").value;
-            let users = getUsers();
+            const users = getUsers();
 
-            let user = users.find(user => user.email === email && user.password === password);
+            const user = users.find(user => user.email === email && user.password === password);
             if (user) {
-                alert("Login bem-sucedido! Redirecionando..");
                 sessionStorage.setItem("loggedInUser", email);
                 sessionStorage.setItem("userImage", user.profileImage || "");
-                window.location.href = "/home.html";
+                sessionStorage.setItem("userName", user.name || "Nome não informado");
+                alert("Login bem-sucedido! Redirecionando...");
+                window.location.href = "home.html";
             } else {
                 alert("Email ou senha incorretos.");
             }
         });
     }
 
-    // === Verificação de login e exibição de email e imagem ===
-    const user = sessionStorage.getItem("loggedInUser");
+    // === Verificação de login e exibição de dados ===
+    const loggedInEmail = sessionStorage.getItem("loggedInUser");
+    const userImage = sessionStorage.getItem("userImage");
+    const userName = sessionStorage.getItem("userName");
+
+    const headerImage = document.getElementById("profileImage");
+    const headerName = document.getElementById("userName");
     const userEmailElement = document.getElementById("userEmail");
-    const profileImageElement = document.getElementById("profileImage");
 
-    if (user) {
-        if (userEmailElement) {
-            userEmailElement.innerText = user;
-        }
+    if (loggedInEmail) {
+        if (userEmailElement) userEmailElement.innerText = loggedInEmail;
+        if (headerImage && userImage) headerImage.src = userImage;
+        if (headerName && userName) headerName.innerText = userName;
 
-        if (profileImageElement) {
-            const userImage = sessionStorage.getItem("userImage");
-            if (userImage) {
-                profileImageElement.src = userImage;
-            }
-        }
-    } else if (userEmailElement || profileImageElement) {
-        window.location.href = "/login.html";
+        const profileName = document.getElementById("profileName");
+        const profilePic = document.getElementById("profilePic");
+        if (profileName && userName) profileName.innerText = userName;
+        if (profilePic && userImage) profilePic.src = userImage;
+    } else if (userEmailElement || headerImage || headerName) {
+        window.location.href = "login.html";
     }
 
     // === Logout ===
     const logoutButton = document.getElementById("logoutButton");
     if (logoutButton) {
         logoutButton.addEventListener("click", function () {
-            sessionStorage.removeItem("loggedInUser");
-            sessionStorage.removeItem("userImage");
+            sessionStorage.clear();
             alert("Você saiu da conta.");
-            window.location.href = "/login.html";
         });
     }
 
@@ -135,52 +146,15 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // === Marcar item ativo do menu lateral ===
+    // === Marcar item ativo do menu ===
     const currentPage = window.location.pathname.split("/").pop();
-    const menuItems = document.querySelectorAll("#sideMenu ul li a");
-
-    menuItems.forEach(item => {
+    document.querySelectorAll("#sideMenu ul li a").forEach(item => {
         if (item.getAttribute("href") === currentPage) {
             item.classList.add("active");
         }
     });
-});
-const profileImageElement = document.getElementById("profileImage");
 
-if (profileImageElement) {
-    const userImage = sessionStorage.getItem("userImage");
-    if (userImage) {
-        profileImageElement.src = userImage;
-    }
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-    const userImage = sessionStorage.getItem("userImage");
-    const userName = sessionStorage.getItem("userName");
-
-    // Header
-    const headerImage = document.getElementById("profileImage");
-    const headerName = document.getElementById("userName");
-
-    if (headerImage && userImage) {
-        headerImage.src = userImage;
-    }
-    if (headerName && userName) {
-        headerName.innerText = userName;
-    }
-
-    // Página de perfil
-    const profileName = document.getElementById("profileName");
-    const profilePic = document.getElementById("profilePic");
-
-    if (profileName && userName) {
-        profileName.innerText = userName;
-    }
-    if (profilePic && userImage) {
-        profilePic.src = userImage;
-    }
-});
-
+    // === Atualização de imagem de perfil (editar perfil) ===
     const editInput = document.getElementById("editProfilePic");
 
     if (editInput) {
@@ -190,8 +164,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 const reader = new FileReader();
                 reader.onload = function (e) {
                     const imageUrl = e.target.result;
-
-                    // Atualiza a imagem no perfil e header
                     sessionStorage.setItem("userImage", imageUrl);
 
                     const profilePic = document.getElementById("profilePic");
@@ -204,3 +176,37 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     }
+});
+
+function salvarPerfil() {
+    const loggedInEmail = sessionStorage.getItem("loggedInUser");
+    if (!loggedInEmail) {
+        alert("Usuário não logado.");
+        window.location.href = "login.html";
+        return;
+    }
+
+    const users = getUsers();
+    const userIndex = users.findIndex(u => u.email === loggedInEmail);
+    if (userIndex === -1) {
+        alert("Usuário não encontrado.");
+        return;
+    }
+
+    const newName = document.getElementById("editName")?.value.trim();
+    const newImage = sessionStorage.getItem("userImage");
+
+    if (newName) {
+        users[userIndex].name = newName;
+        sessionStorage.setItem("userName", newName);
+    }
+
+    if (newImage) {
+        users[userIndex].profileImage = newImage;
+    }
+
+    localStorage.setItem("users", JSON.stringify(users));
+
+    alert("Perfil atualizado com sucesso!");
+    window.location.href = "perfil.html";
+}

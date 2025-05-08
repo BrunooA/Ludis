@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/home.css">
 </head>
-</head>
 
 <body class="home">
     <header>
@@ -46,9 +45,26 @@
             <li><a href="login.html" id="logoutButton"><i class="bi bi-box-arrow-right"></i> Sair</a></li>
         </ul>
     </div>
-    <main>
-        <h1>Suporte</h1>
-        <!-- Conteúdo da página... -->
+
+    <main class="container my-5">
+        <h1 class="mb-4">Suporte</h1>
+        <p>Se você tiver alguma dúvida ou precisar de ajuda, por favor, preencha o formulário abaixo e nossa equipe de suporte entrará em contato com você o mais breve possível.</p>
+        
+        <form action="suporte_envio.php" method="POST">
+            <div class="mb-3">
+                <label for="nome" class="form-label">Seu Nome</label>
+                <input type="text" class="form-control" id="nome" name="nome" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Seu Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="mensagem" class="form-label">Sua Mensagem</label>
+                <textarea class="form-control" id="mensagem" name="mensagem" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
