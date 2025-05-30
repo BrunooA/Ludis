@@ -36,6 +36,17 @@
         <button class="btn btn-outline-secondary" onclick="window.location.href = 'mapa.html'">Voltar ao Mapa</button>
     </div>
 
+    <script>
+        function salvarProgresso(tema) {
+    const progresso = JSON.parse(localStorage.getItem('progressoFases')) || [];
+    if (!progresso.includes(tema)) {
+        progresso.push(tema);
+        localStorage.setItem('progressoFases', JSON.stringify(progresso));
+    }
+}
+
+    </script>
+
     <script src="js/quiz.js"></script>
     <script src="js/script.js"></script>
 </body>

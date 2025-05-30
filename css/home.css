@@ -317,22 +317,33 @@ label {
     background-color: #e2e2e2;
 }
 
+/* Estilo base do botão de fase */
 .fase {
     width: 200px;
     height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 10px;
-    padding: 10px;
+    margin: 20px;
+    padding: 20px;
     border-radius: 10px;
-    color: white;
     font-weight: bold;
     font-size: 18px;
     text-align: center;
     text-decoration: none;
     transition: transform 0.2s ease;
+    color: white;
 }
+
+/* Cores diferentes para cada fase */
+#fase1 { background-color: #FF6F61; } /* Financeiro */
+#fase2 { background-color: #6A5ACD; } /* Tecnologia */
+#fase3 { background-color: #FF69B4; } /* Empoderamento */
+#fase4 { background-color: #20B2AA; } /* Carreiras */
+#fase5 { background-color: #FF8C00; } /* Direitos Humanos */
+#fase6 { background-color: #4682B4; } /* Empreendedorismo */
+
+
 
 .fase a {
     color: white;
@@ -357,6 +368,7 @@ label {
     cursor: not-allowed;
 }
 
+
 .fase-pendente {
     background-color: #ffc107;
     color: #000;
@@ -372,6 +384,7 @@ label {
 
 .fase-botao {
     flex: 0 0 auto;
+     margin: 10px;
 }
 
 .player-card {
@@ -382,5 +395,118 @@ label {
     padding: 10px;
     border-radius: 10px;
     border: 2px solid #3D198E;
-    /* Borda adicional para destacar o usuário logado */
+}
+
+/* Chatbot */
+#chatbot {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 320px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    display: none;
+    flex-direction: column;
+    z-index: 9999;
+    border: 1px solid #ccc;
+    overflow: hidden;
+}
+
+#chatbot-header {
+    background: #0d6efd;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#chatbot-header .bot-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#botAvatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+#chatbot-messages {
+    height: 250px;
+    padding: 10px;
+    overflow-y: auto;
+    background: #f9f9f9;
+    font-size: 14px;
+}
+
+#chatbot-input-area {
+    display: flex;
+    border-top: 1px solid #ddd;
+}
+
+#chatbot-input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    font-size: 14px;
+    outline: none;
+}
+
+#chatbot-send {
+    background: #0d6efd;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+#chatbot-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #0d6efd;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 9999;
+}
+
+/* Estilo das mensagens */
+.chat-message {
+    margin: 5px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.chat-message.bot {
+    flex-direction: row;
+}
+
+.chat-message.user {
+    flex-direction: row-reverse;
+}
+
+.chat-message .avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.chat-message .text {
+    background: #e9ecef;
+    padding: 8px 12px;
+    border-radius: 10px;
+    max-width: 70%;
+}
+
+.chat-message.user .text {
+    background: #d1e7dd;
 }

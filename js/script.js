@@ -12,6 +12,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 this.querySelector("i").classList.toggle("bi-eye-slash", isPassword);
             });
         }
+        const avatarPreview = document.getElementById("avatarSelecionado");
+        if (avatarPreview && userImage) {
+            avatarPreview.src = userImage;
+        }
+
     }
 
     setupTogglePassword("togglePassword", "password");
@@ -210,3 +215,28 @@ function salvarPerfil() {
     alert("Perfil atualizado com sucesso!");
     window.location.href = "perfil.html";
 }
+
+function toggleChat() {
+    const chatBox = document.getElementById("chat-box");
+    if (chatBox.classList.contains("d-none")) {
+        chatBox.classList.remove("d-none", "animate__fadeOutDown");
+        chatBox.classList.add("animate__fadeInUp");
+    } else {
+        chatBox.classList.remove("animate__fadeInUp");
+        chatBox.classList.add("animate__fadeOutDown");
+        setTimeout(() => chatBox.classList.add("d-none"), 500);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Carregar imagem do bot (fixa)
+    const botAvatar = document.getElementById("botAvatar");
+    botAvatar.src = "images/luddis-bot.png"; // substitua com o caminho da sua imagem do bot
+
+    // Carregar imagem do usuário
+    const userAvatar = document.getElementById("userAvatar");
+    const userImage = sessionStorage.getItem("userImage");
+    if (userImage && userAvatar) {
+        userAvatar.src = userImage;
+    }
+});

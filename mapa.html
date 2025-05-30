@@ -18,41 +18,7 @@
 
     <!-- Seu CSS -->
     <link rel="stylesheet" href="css/home.css">
-    <style>
-        .fase {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 20px;
-            padding: 20px;
-            border-radius: 10px;
-            font-weight: bold;
-            font-size: 18px;
-        }
 
-        .fase-completa {
-            background-color: #28a745;
-        }
-
-        .fase-bloqueada {
-            background-color: #6c757d;
-            cursor: not-allowed;
-        }
-
-        .fase-pendente {
-            background-color: #ffc107;
-        }
-
-        .mapa-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .fase-botao {
-            margin: 10px;
-        }
-    </style>
 </head>
 
 <body class="home">
@@ -83,30 +49,77 @@
         </ul>
     </div>
 
-    <div class="container">
-        <h1 class="text-center my-5">Mapa de Fases</h1>
-        <div class="mapa-container">
-            <div class="fase fase-completa fase-botao" id="fase1">
-                <a href="quiz.html?tema=financeiro" class="text-white text-center">Financeiro</a>
-            </div>
-            <div class="fase fase-completa fase-botao" id="fase2">
-                <a href="quiz.html?tema=tecnologia" class="text-white w-100 text-center">Tecnologia</a>
-            </div>
-            <div class="fase fase-completa fase-botao" id="fase3">
-                <a href="empoderamento.html" class="text-white w-100 text-center">Empoderamento</a>
-            </div>
-            <div class="fase fase-completa fase-botao" id="fase4">
-                <a href="quiz.html?tema=carreiras" class="text-white w-100 text-center">Carreiras</a>
-            </div>
-            <div class="fase fase-completa fase-botao" id="fase5">
-                <a href="quiz.html?tema=direitos_humanos" class="text-white w-100 text-center">Direitos Humanos</a>
-            </div>
-            <div class="fase fase-completa fase-botao" id="fase6">
-                <a href="quiz.html?tema=empreendedorismo" class="text-white w-100 text-center">Empreendedorismo</a>
-            </div>
+    <div class="mapa-container">
+        <div class="fase fase-botao" id="fase1">
+            <a href="quiz.html?tema=financeiro" class="text-white w-100 text-center">Financeiro</a>
         </div>
-        <a href="home.html" class="btn btn-secondary mt-4">Voltar à Página Inicial</a>
+        <div class="fase fase-botao" id="fase2">
+            <a href="quiz.html?tema=tecnologia" class="text-white w-100 text-center">Tecnologia</a>
+        </div>
+        <div class="fase fase-botao" id="fase3">
+            <a href="quiz.html?tema=empoderamento" class="text-white w-100 text-center">Empoderamento</a>
+        </div>
+        <div class="fase fase-botao" id="fase4">
+            <a href="quiz.html?tema=carreiras" class="text-white w-100 text-center">Carreiras</a>
+        </div>
+        <div class="fase fase-botao" id="fase5">
+            <a href="quiz.html?tema=direitos_humanos" class="text-white w-100 text-center">Direitos Humanos</a>
+        </div>
+        <div class="fase fase-botao" id="fase6">
+            <a href="quiz.html?tema=empreendedorismo" class="text-white w-100 text-center">Empreendedorismo</a>
+        </div>
     </div>
+    <script>
+        function getTemaAtual() {
+            const params = new URLSearchParams(window.location.search);
+            return params.get('tema');
+        }
+
+        function salvarProgressoAutomaticamente() {
+            const temaAtual = getTemaAtual();
+            if (!temaAtual) return;
+
+            let progresso = JSON.parse(localStorage.getItem('progressoFases')) || [];
+            if (!progresso.includes(temaAtual)) {
+                progresso.push(temaAtual);
+                localStorage.setItem('progressoFases', JSON.stringify(progresso));
+            }
+        }
+
+        // Exemplo: botão de concluir quiz
+        document.getElementById("btnFinalizarQuiz").addEventListener("click", function () {
+            salvarProgressoAutomaticamente();
+            window.location.href = "mapa.html"; // redireciona ao mapa
+        });
+    </script>
+    <script>
+        const ordemFases = [
+            { id: "fase1", tema: "financeiro" },
+            { id: "fase2", tema: "tecnologia" },
+            { id: "fase3", tema: "empoderamento" },
+            { id: "fase4", tema: "carreiras" },
+            { id: "fase5", tema: "direitos_humanos" },
+            { id: "fase6", tema: "empreendedorismo" }
+        ];
+
+        const progresso = JSON.parse(localStorage.getItem("progressoFases")) || [];
+
+        ordemFases.forEach((fase, index) => {
+            const elemento = document.getElementById(fase.id);
+
+            if (progresso.includes(fase.tema)) {
+                elemento.classList.add("fase-completa");
+            } else if (index === 0 || progresso.includes(ordemFases[index - 1].tema)) {
+                elemento.classList.add("fase-pendente");
+            } else {
+                elemento.classList.add("fase-bloqueada");
+                const link = elemento.querySelector("a");
+                link.style.pointerEvents = "none";
+                link.style.opacity = "0.5";
+            }
+        });
+    </script>
+
 
     <script src="js/script.js"></script>
     <script src="js/ranking.js"></script>
