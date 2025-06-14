@@ -1,6 +1,7 @@
-# Sistema de Educação Hospitalar Interativa
+LUDIS - Mulheres em Situação de Vulnerabilidade
 
-Este projeto é um sistema educacional voltado para ambientes hospitalares, com funcionalidades que promovem a aprendizagem, interação e suporte ao usuário no contexto do SUS.
+Integrantes do grupo: Adryel, Amanda Rosário, Bruno, Larissa e Raissa
+
 
 ## 📁 Estrutura do Projeto
 
@@ -88,6 +89,3 @@ Página explicativa sobre como usar o sistema.
 - CSS3 (incluindo Bootstrap 5)
 - JavaScript
 - Armazenamento via `localStorage`.
-
----
-# Ludis
